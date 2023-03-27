@@ -1,37 +1,50 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Card from '../components/Card.astro';
+import Counter from '../components/Counter.astro';
+import Location from '../components/Location.astro';
+import ImageCard from '../components/ImageCard.astro';
+import HeartCard from '../components/HeartCard.astro';
+
+const zip = (a: any, b: any) => a.map((k: any, i: any) => [k, b[i]]);
+
+const words = "I love you so much my beautiful darling girl !".split(" ")
+
+const imgs = [
+	"/IMG_20220326_170758.jpg",
+	"/IMG_20220412_114227.jpg",
+	"/IMG_20220506_175902.jpg",
+	"/IMG_20220528_134100.jpg",
+	"/IMG_20220717_132134.jpg",
+	"/IMG_20230318_233758.jpg",
+	"/IMG_20230320_154208.jpg",
+	"/original_c526cbc3-274e-4468-92f5-bb1ae2f925bb_IMG_20210718_195703~2.jpg",
+	"/original_6ecd1616-0e85-42e6-be19-a27f18268673_IMG_20220716_173404.jpg",
+	"/IMG_20230201_223631.jpg"
+];
+
+const zipped_title_words = zip(words, imgs)
+
+
 ---
 
-<Layout title="Welcome to Astro.">
+<Layout title="My darling Sára ❤️">
 	<main>
-		<h1>Welcome to <span class="text-gradient">Astro</span></h1>
-		<p class="instructions">
-			To get started, open the directory <code>src/pages</code> in your project.<br />
-			<strong>Code Challenge:</strong> Tweak the "Welcome to Astro" message above.
-		</p>
+		<h1>My darling <span class="text-gradient">Sára</span>❤️</h1>
 		<ul role="list" class="link-card-grid">
-			<Card
-				href="https://docs.astro.build/"
-				title="Documentation"
-				body="Learn how Astro works and explore the official API docs."
-			/>
-			<Card
-				href="https://astro.build/integrations/"
-				title="Integrations"
-				body="Supercharge your project with new frameworks and libraries."
-			/>
-			<Card
-				href="https://astro.build/themes/"
-				title="Themes"
-				body="Explore a galaxy of community-built starter themes."
-			/>
-			<Card
-				href="https://astro.build/chat/"
-				title="Community"
-				body="Come say hi to our amazing Discord community. ❤️"
-			/>
+			<Counter />
+			<Location />
+			<Card title="... and we'll go to so many more ❤️" />
 		</ul>
+		<ul role="list" class="photo-grid">
+			{zipped_title_words.map((img) => (
+				<ImageCard title={img[0]} img={img[1]}/>
+			))}
+		</ul>
+		<ul role="list" class="link-card-grid">
+			<HeartCard title="Happy anniversary my darling, love Paul" />
+		</ul>
+
 	</main>
 </Layout>
 
@@ -39,7 +52,7 @@ import Card from '../components/Card.astro';
 	main {
 		margin: auto;
 		padding: 1.5rem;
-		max-width: 60ch;
+		max-width: 80vw;
 	}
 	h1 {
 		font-size: 3rem;
@@ -74,7 +87,13 @@ import Card from '../components/Card.astro';
 	}
 	.link-card-grid {
 		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
+		grid-template-columns: 100 vw;
+		gap: 1rem;
+		padding: 0;
+	}
+	.photo-grid {
+		display: grid;
+		grid-template-columns: 40vw 40vw;
 		gap: 1rem;
 		padding: 0;
 	}

@@ -1,0 +1,86 @@
+---
+export interface Props {
+	
+}
+
+const { } = Astro.props;
+---
+
+<li class="link-card">
+	<a>
+		<h2>My bonnie bonnie lassie</h2>
+		<p class="counter-time"/>
+		<p>and every one of those milliseconds, I grow to love you more</p>
+	</a>
+</li>
+<script>
+	function writeTime(){
+			const updateDayCounter = () => {
+			const startDate = new Date('2021-04-03T16:00:00Z');
+			const today = new Date();
+			const timeDiff = today.valueOf()- startDate.valueOf();
+			const dayDiff = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+			const yearsDiff = (timeDiff / (1000 * 60 * 60 * 24 * 365)).toFixed(2);
+			const hoursDiff = Math.floor(timeDiff / (1000 * 60 * 60));
+			const minsDiff = Math.floor(timeDiff / (1000 * 60));
+
+			const millisDiff = timeDiff;
+
+			const resStr = `I've known you for ${yearsDiff} years
+			<br/>or ${dayDiff} days
+			<br/>or ${hoursDiff} hours
+			<br/>or ${minsDiff} minutes
+			<br/>or ${millisDiff} milliseconds`
+
+			document.querySelector('.counter-time')!.innerHTML = resStr;
+		}
+	
+		updateDayCounter();
+	}
+
+	writeTime();
+	setInterval(writeTime, 1);
+
+</script>
+<style>
+	.link-card {
+		list-style: none;
+		display: flex;
+		padding: 0.25rem;
+		background-color: white;
+		background-image: none;
+		background-size: 400%;
+		border-radius: 0.6rem;
+		background-position: 100%;
+		transition: background-position 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+		box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+	}
+
+	.link-card > a {
+		width: 100%;
+		text-decoration: none;
+		line-height: 1.4;
+		padding: 1rem 1.3rem;
+		border-radius: 0.35rem;
+		color: #111;
+		background-color: white;
+		opacity: 0.8;
+	}
+	h2 {
+		margin: 0;
+		font-size: 1.25rem;
+		transition: color 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+	}
+	p {
+		margin-top: 0.5rem;
+		margin-bottom: 0;
+		color: #444;
+	}
+	.link-card:is(:hover, :focus-within) {
+		background-position: 0;
+		background-image: var(--accent-gradient);
+	}
+	.link-card:is(:hover, :focus-within) h2 {
+		color: rgb(var(--accent));
+	}
+</style>

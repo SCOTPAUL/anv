@@ -1,0 +1,132 @@
+---
+export interface Props {
+
+}
+
+const { title } = Astro.props;
+---
+
+<li class="link-card">
+	<a>
+		<h2>
+			{title}
+		</h2>
+		<div id="heart"></div>
+	</a>
+</li>
+<style>
+	.link-card {
+		list-style: none;
+		display: flex;
+		padding: 0.25rem;
+		background-color: white;
+		background-image: none;
+		background-size: 400%;
+		border-radius: 0.6rem;
+		background-position: 100%;
+		transition: background-position 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+		box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+	}
+	
+	.link-card > a {
+		width: 100%;
+		text-decoration: none;
+		line-height: 1.4;
+		padding: 1rem 1.3rem;
+		border-radius: 0.35rem;
+		color: #111;
+		opacity: 0.8;
+	}
+	h2 {
+		margin: 0;
+		font-size: 1.25rem;
+		transition: color 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+		color: #fff;
+	}
+	p {
+		margin-top: 0.5rem;
+		margin-bottom: 0;
+		color: #444;
+	}
+	.link-card:is(:hover, :focus-within) {
+		background-position: 0;
+		background-image: var(--accent-gradient);
+	}
+	
+	.link-card {
+		background-color:#c33
+	}
+	
+	#heart {
+		position: relative;
+		width: 100px;
+		height: 90px;
+		animation: heartbeat 1s infinite;
+		margin:0 auto
+	}
+	#heart:before,
+	#heart:after {
+		position: absolute;
+		content: "";
+		left: 50px;
+		top: 0;
+		width: 50px;
+		height: 80px;
+		background: #fff;
+		-moz-border-radius: 50px 50px 0 0;
+		border-radius: 50px 50px 0 0;
+		-webkit-transform: rotate(-45deg);
+		-moz-transform: rotate(-45deg);
+		-ms-transform: rotate(-45deg);
+		-o-transform: rotate(-45deg);
+		transform: rotate(-45deg);
+		-webkit-transform-origin: 0 100%;
+		-moz-transform-origin: 0 100%;
+		-ms-transform-origin: 0 100%;
+		-o-transform-origin: 0 100%;
+		transform-origin: 0 100%;
+	}
+	#heart:after {
+		left: 0;
+		-webkit-transform: rotate(45deg);
+		-moz-transform: rotate(45deg);
+		-ms-transform: rotate(45deg);
+		-o-transform: rotate(45deg);
+		transform: rotate(45deg);
+		-webkit-transform-origin: 100% 100%;
+		-moz-transform-origin: 100% 100%;
+		-ms-transform-origin: 100% 100%;
+		-o-transform-origin: 100% 100%;
+		transform-origin :100% 100%;
+	}
+	
+	
+	
+	@keyframes heartbeat
+	{
+		0%
+		{
+			transform: scale( .75 );
+		}
+		20%
+		{
+			transform: scale( 1 );
+		}
+		40%
+		{
+			transform: scale( .75 );
+		}
+		60%
+		{
+			transform: scale( 1 );
+		}
+		80%
+		{
+			transform: scale( .75 );
+		}
+		100%
+		{
+			transform: scale( .75 );
+		}
+	}
+</style>
