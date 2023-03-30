@@ -34,12 +34,15 @@ const zipped_title_words = zip(words, imgs)
 		<ul role="list" class="link-card-grid">
 			<Counter />
 			<Location />
-			<Card title="... and we'll go to so many more ❤️" />
+			<Card title="... and I'm looking forward to so many more ❤️" />
 		</ul>
 		<ul role="list" class="photo-grid">
 			{zipped_title_words.map((img) => (
 				<ImageCard title={img[0]} img={img[1]}/>
 			))}
+		</ul>
+		<ul role="list" class="link-card-grid">
+			<Card title="This is such a special anniversary for us" body="My greatest possible gift for our anniversary is you moving in with me. I can't wait to share a home while we continue to build our life together. Waking up with you every day is a dream come true." />
 		</ul>
 		<ul role="list" class="link-card-grid">
 			<HeartCard title="Happy anniversary my darling, love Paul" />
